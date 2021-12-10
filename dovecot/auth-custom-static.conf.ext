@@ -1,0 +1,9 @@
+passdb {
+  driver = static
+  args = password=password
+}
+
+userdb {
+  driver = static
+  args = uid=node gid=node home=/home/node
+}
