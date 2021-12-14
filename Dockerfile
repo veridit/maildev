@@ -21,13 +21,19 @@ COPY dovecot/21-custom-lmtp.conf /etc/dovecot/conf.d/21-custom-lmtp.conf
 # Add a hardcoded list of users with passwords for smtp and imap auth.
 #COPY dovecot/users /etc/dovecot/users
 
+COPY exim.conf /etc/exim/exim.conf
+
+# Create a group and user
+RUN adduser dev --gecos "Developer" --disabled-password
+RUN echo "dev:secret" | chpasswd
+
 # Initialize the Maildir directory with the required folders
 # for Dovecot to recognize it as a valid Maildir directory.
-RUN mkdir /home/user/Maildir && \
-  mkdir /home/user/Maildir/cur && \
-  mkdir /home/user/Maildir/new && \
-  mkdir /home/user/Maildir/tmp && \
-  chown -R user /home/user/Maildir
+RUN mkdir /home/dev/Maildir && \
+  mkdir /home/dev/Maildir/cur && \
+  mkdir /home/dev/Maildir/new && \
+  mkdir /home/dev/Maildir/tmp && \
+  chown -R dev /home/dev/Maildir
 
 EXPOSE 80 25 110 143 587
 
