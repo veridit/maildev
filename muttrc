@@ -1,0 +1,19 @@
+set folder    = imap://user@localhost:1143/
+set imap_user = user
+set imap_pass = password
+set spoolfile = +INBOX"
+
+set config_charset=utf-8
+set date_format = "%F %T"
+set date_format = "%F %T"
+#set imap_home_namespace = "INBOX"
+#set imap_recent = yes
+set record = "=INBOX/sent-mail"
+set postponed = "=INBOX/drafts"
+set move = no
+#set locale = no_NO
+set mask =  "!^\.[^.]$"
+set print_command = "enscript"
+set fcc_clear = yes
+set imap_check_subscribed = yes
+hdr_order To: From From: Date: Cc: Subject:
